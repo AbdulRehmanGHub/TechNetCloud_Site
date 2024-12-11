@@ -11,13 +11,21 @@ import Services from "./components/Services";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeContext } from "./contexts/ThemeContext";
 // import { useContext } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   const [isLight, setIsLight] = useState(
-    JSON.parse(localStorage.getItem("isLightMode")) || true
+    JSON.parse(localStorage.getItem("isLightMode")) ?? true
   );
+
+  useEffect(() => {
+    if (isLight) {
+      document.body.classList.add("lightMode");
+    } else {
+      document.body.classList.remove("lightMode");
+    }
+  }, [isLight]);
 
   return (
     <>
