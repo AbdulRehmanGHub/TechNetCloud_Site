@@ -30,12 +30,13 @@ const Navbar = () => {
     setIsResNavVisible((prev) => !prev);
   };
 
+  const closeMenu = () => {
+    setIsResNavVisible(false);
+  };
+
   return (
     <>
-      <header
-        className="nav md:max-w-full md:px-16 md:py-7 md:items-center md:shadow-sm md:transition-all transition-all max-w-full px-4 pt-4 pb-2 items-center shadow-sm sticky top-0 z-20
-      "
-      >
+      <header className="nav md:max-w-full md:px-16 md:py-7 md:items-center md:shadow-sm md:transition-all transition-all max-w-full px-4 pt-4 pb-2 items-center shadow-sm sticky top-0 z-20">
         <div className="flex justify-between items-center 2xl:flex 2xl:justify-center 2xl:items-center">
           <Link to={"/"}>
             <div className="logo rounded-[50%] bg-white w-12 h-12 p-2 2xl:w-16 2xl:h-16">
@@ -46,11 +47,7 @@ const Navbar = () => {
               />
             </div>
           </Link>
-          <div
-            className="links md:flex md:justify-center md:items-center md:gap-2 md:w-4/5
-          hidden
-          "
-          >
+          <div className="links md:flex md:justify-center md:items-center md:gap-2 md:w-4/5 hidden">
             <ul className="flex justify-evenly items-center gap-16 text-lg 2xl:text-2xl">
               <NavLink
                 to={"/"}
@@ -93,9 +90,7 @@ const Navbar = () => {
             </div>
             <div
               onClick={toggleResNav}
-              className="menuBar flex md:text-3xl text-2xl
-          md:hidden
-          "
+              className="menuBar flex md:text-3xl text-2xl md:hidden"
             >
               <FontAwesomeIcon
                 className={`bars ${isResNavVisible ? "hidden" : "flex"}`}
@@ -119,6 +114,7 @@ const Navbar = () => {
           <NavLink
             to={"/"}
             className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={closeMenu}
           >
             <li className="link">Home</li>
           </NavLink>
@@ -126,6 +122,7 @@ const Navbar = () => {
           <NavLink
             to={"/services"}
             className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={closeMenu}
           >
             <li className="link">Services</li>
           </NavLink>
@@ -133,6 +130,7 @@ const Navbar = () => {
           <NavLink
             to={"/about"}
             className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={closeMenu}
           >
             <li className="link">About</li>
           </NavLink>
@@ -140,6 +138,7 @@ const Navbar = () => {
           <NavLink
             to={"/contact"}
             className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={closeMenu}
           >
             <li className="link">Contact</li>
           </NavLink>
