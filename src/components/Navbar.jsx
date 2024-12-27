@@ -1,5 +1,4 @@
-import { faSun } from "@fortawesome/free-solid-svg-icons";
-import { faMoon } from "@fortawesome/free-regular-svg-icons";
+import { Moon, Sun } from "lucide-react";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink } from "react-router-dom";
@@ -67,7 +66,7 @@ const Navbar = () => {
                 to={"/about"}
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
-                <li className="link">About</li>
+                <li className="link">About </li>
               </NavLink>
 
               <NavLink
@@ -86,7 +85,7 @@ const Navbar = () => {
                 color: isLight ? "black" : "white",
               }}
             >
-              <FontAwesomeIcon icon={isLight ? faMoon : faSun} />
+              {isLight ? <Moon /> : <Sun />}
             </div>
             <div
               onClick={toggleResNav}
