@@ -9,6 +9,33 @@ import {
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
+  const social = [
+    {
+      id: 1,
+      name: "fb",
+      icon: <FontAwesomeIcon icon={faFacebookF} />,
+      link: "https://www.facebook.com/groups/180797321520415/user/100087677676688",
+    },
+    {
+      id: 2,
+      name: "wa",
+      icon: <FontAwesomeIcon icon={faWhatsapp} />,
+      link: "https://wa.me/+923201207871",
+    },
+    {
+      id: 3,
+      name: "yt",
+      icon: <FontAwesomeIcon icon={faYoutube} />,
+      link: "https://www.youtube.com/@TechNetCloud",
+    },
+    {
+      id: 4,
+      name: "li",
+      icon: <FontAwesomeIcon icon={faLinkedin} />,
+      link: "https://www.linkedin.com/company/technetcloud/mycompany/",
+    },
+  ];
+
   return (
     <>
       <footer
@@ -39,43 +66,24 @@ const Footer = () => {
                 innovative solutions and unparalleled expertise.
               </p>
             </div>
+
             <div className="socials flex items-center gap-4">
-              <div className="fb text-xl cursor-pointer 2xl:text-3xl">
-                <a
-                  className="foot-icon hover:text-[#2c92c2]"
-                  target="_blank"
-                  href="https://www.facebook.com/groups/180797321520415/user/100087677676688"
-                >
-                  <FontAwesomeIcon icon={faFacebookF} />
-                </a>
-              </div>
-              <div className="wa text-xl cursor-pointer 2xl:text-3xl">
-                <a
-                  className="foot-icon hover:text-[#2c92c2]"
-                  target="_blank"
-                  href="https://wa.me/+923201207871"
-                >
-                  <FontAwesomeIcon icon={faWhatsapp} />
-                </a>
-              </div>
-              <div className="yt text-xl cursor-pointer 2xl:text-3xl">
-                <a
-                  className="foot-icon hover:text-[#2c92c2]"
-                  target="_blank"
-                  href="https://www.youtube.com/@TechNetCloud"
-                >
-                  <FontAwesomeIcon icon={faYoutube} />
-                </a>
-              </div>
-              <div className="li text-xl cursor-pointer 2xl:text-3xl">
-                <a
-                  className="foot-icon hover:text-[#2c92c2]"
-                  target="_blank"
-                  href="https://www.linkedin.com/company/technetcloud/mycompany/"
-                >
-                  <FontAwesomeIcon icon={faLinkedin} />
-                </a>
-              </div>
+              {social.map(({ id, name, icon, link }) => {
+                return (
+                  <div
+                    key={id}
+                    className={`text-xl cursor-pointer 2xl:text-3xl + ${name}`}
+                  >
+                    <a
+                      className="foot-icon hover:text-[#2c92c2]"
+                      target="_blank"
+                      href={link}
+                    >
+                      {icon}
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div

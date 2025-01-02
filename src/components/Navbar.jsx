@@ -6,6 +6,29 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 const Navbar = () => {
+  const navLinks = [
+    {
+      id: 1,
+      location: "/",
+      name: "Home",
+    },
+    {
+      id: 2,
+      location: "/services",
+      name: "Services",
+    },
+    {
+      id: 3,
+      location: "/about",
+      name: "About",
+    },
+    {
+      id: 4,
+      location: "/contact",
+      name: "Contact",
+    },
+  ];
+
   const [isLight, setIsLight] = useContext(ThemeContext);
   const [isResNavVisible, setIsResNavVisible] = useState(false);
 
@@ -46,37 +69,23 @@ const Navbar = () => {
               />
             </div>
           </Link>
+
           <div className="links md:flex md:justify-center md:items-center md:gap-2 md:w-4/5 hidden">
             <ul className="flex justify-evenly items-center gap-16 text-lg 2xl:text-2xl">
-              <NavLink
-                to={"/"}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                <li className="link">Home</li>
-              </NavLink>
-
-              <NavLink
-                to={"/services"}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                <li className="link">Services</li>
-              </NavLink>
-
-              <NavLink
-                to={"/about"}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                <li className="link">About </li>
-              </NavLink>
-
-              <NavLink
-                to={"/contact"}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                <li className="link">Contact</li>
-              </NavLink>
+              {navLinks.map(({ id, name, location }) => {
+                return (
+                  <NavLink
+                    key={id}
+                    to={`${location}`}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    <li className="link">{name}</li>
+                  </NavLink>
+                );
+              })}
             </ul>
           </div>
+
           <div className="theme cursor-pointer flex items-start justify-center gap-4">
             <div
               className="md:text-2xl 2xl:text-3xl text-xl w-6 h-6"
@@ -110,37 +119,18 @@ const Navbar = () => {
         } justify-end items-end gap-2`}
       >
         <ul className="resNav flex flex-col h-[160px] w-[200px] px-4 shadow-md justify-center gap-2 rounded-lg text-lg">
-          <NavLink
-            to={"/"}
-            className={({ isActive }) => (isActive ? "active" : "")}
-            onClick={closeMenu}
-          >
-            <li className="link">Home</li>
-          </NavLink>
-
-          <NavLink
-            to={"/services"}
-            className={({ isActive }) => (isActive ? "active" : "")}
-            onClick={closeMenu}
-          >
-            <li className="link">Services</li>
-          </NavLink>
-
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) => (isActive ? "active" : "")}
-            onClick={closeMenu}
-          >
-            <li className="link">About</li>
-          </NavLink>
-
-          <NavLink
-            to={"/contact"}
-            className={({ isActive }) => (isActive ? "active" : "")}
-            onClick={closeMenu}
-          >
-            <li className="link">Contact</li>
-          </NavLink>
+          {navLinks.map(({ id, name, location }) => {
+            return (
+              <NavLink
+                key={id}
+                to={`${location}`}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={closeMenu}
+              >
+                <li className="link">{name}</li>
+              </NavLink>
+            );
+          })}
         </ul>
       </div>
     </>
